@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todos</title>
+        <link rel="stylesheet" href="/dist/styles.css">
+        <script src="/dist/main.js" defer></script>
+        <script src="https://kit.fontawesome.com/3cd19b9785.js" crossorigin="anonymous"></script>
+ 
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                <h1 Class="title">Todos</h1>
+            </div>
+        </header>
+        <main class="main">
+            <div class="modal">
+                <div class="modal-content">
+                    <input placeholder="Name">
+                    <input placeholder="Description">
+                    <button id="submit">Submit</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+            </div>
+            <div class="nav">
+                <div class="nav-box">
+                    <button class="nav-button" aria-hidden="true" id="todos">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        Todos
+                    </button>
+                    <button class="nav-button" id="project-tab">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        Projects
+                    </button>
+                    <button class="nav-button">
+                        <i class="fa-solid fa-vault"></i>
+                        Archived Todos
+                    </button>
+                </div>
+                <h1>My Todos</h1>
+                <div class="nav-box">
+                    <button class="nav-button">
+                        <i class="fa-solid fa-vault"></i>
+                        Today
+                    </button>
+                </div>
+            </div>
+            <div class="todo-content">
+                
+                <div class="list-box"></div>
+            </div>
+
+        </main>
+
+
+
+
+
+    <footer class="footer">
+    </footer>
+    </body>
+</html>
