@@ -1,0 +1,78 @@
+import listeners from "./listeners";
+
+function createProjectItem(_List, project, _arr, _arrStr){
+
+    let pbox = document.createElement("div");
+    pbox.className = "pbox";
+
+    let pName = document.createElement("h2");
+    pName.innerHTML = project.name;
+
+    let pInfo = document.createElement("p");
+    pInfo.innerHTML = project.description;
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.className = "bdiv";
+    
+    let pCompleted = document.createElement('input');
+    pCompleted.type = "checkbox";
+
+    let delButton = document.createElement("button");
+    
+    delButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    delButton.id="del";
+    
+
+    _List.appendChild(pbox);
+    pbox.appendChild(pName);
+    pbox.appendChild(pInfo);
+    pbox.appendChild(buttonDiv);
+    buttonDiv.appendChild(pCompleted);
+    buttonDiv.appendChild(delButton);
+    buttonDiv.appendChild(delButton).addEventListener('click', () => {
+
+        _List.removeChild(pbox);
+        _arr.splice(pbox, 1);
+        localStorage.setItem(_arrStr, JSON.stringify(_arr));
+    });
+}
+
+function createTodoItem(_List, todo, _arr, _arrStr){
+
+    let tbox = document.createElement("div");
+    tbox.className = "pbox";
+    
+    let tName = document.createElement("h2");
+    tName.innerHTML = todo.name;
+    
+    let tInfo = document.createElement("p");
+    tInfo.innerHTML = todo.description;
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.className = "bdiv";
+    
+    let pCompleted = document.createElement('input');
+    pCompleted.type = "checkbox";
+
+    let delButton = document.createElement("button");
+    
+    delButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    delButton.id="del";
+    
+    _List.appendChild(tbox);
+    tbox.appendChild(tName);
+    tbox.appendChild(tInfo);
+    tbox.appendChild(buttonDiv);
+    buttonDiv.appendChild(pCompleted);
+    buttonDiv.appendChild(delButton);
+    buttonDiv.appendChild(delButton).addEventListener('click', () => {
+
+        _List.removeChild(tbox);
+        _arr.splice(tbox, 1);
+        localStorage.setItem(_arrStr, JSON.stringify(_arr));
+    });
+
+}
+
+
+export {createProjectItem, createTodoItem};

@@ -1,7 +1,7 @@
 
-import init from './modules/domElements';
+import render from './modules/domElements';
 
-const render = (() => {
+const init = (() => {
 
     let form = document.querySelector('.modal');
 
@@ -10,7 +10,8 @@ const render = (() => {
 
     let _List = document.querySelector('.list-box');
 
-    init(form, _List, todos, projectArray);
+    render(form, _List, todos, projectArray);
+
 })();
 
 

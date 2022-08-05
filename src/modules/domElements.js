@@ -1,9 +1,9 @@
-import { addProject, addTodo } from "./Functions";
+import { addProject, addTodo } from "./Functions.js";
 import {projectDom} from './Projects';
-import { todoDom } from "./Todos";
+import { todoDom } from "./Todos.js";
 
 
-const init = ((form, _List, todos, projectArray) =>{
+const render = ((form, _List, todos, projectArray) =>{
 
         let p = document.querySelector('#project-tab');
         p.addEventListener('click', renderProjects);
@@ -24,16 +24,20 @@ const init = ((form, _List, todos, projectArray) =>{
         
         function submit(){
         
-            if(form.hasAttribute('data', 'todos')){
+            if(form.getAttribute('data') == 'todo'){
+
+                addTodo(_List, todos, 'todos');
+                cancel();
         
-                addProject();
+            }
+            
+            else if(form.getAttribute('data') == "project"){
         
-            }else if(form.hasAttribute('data', 'project')){
-        
-                addTodo();
+                addProject(_List, projectArray, 'projectArray');
+                cancel();
             }
         
-          cancel();
+          
         
         }
 
@@ -52,7 +56,7 @@ const init = ((form, _List, todos, projectArray) =>{
 });
 
 
-export default init;
+export default render;
 
 
 

@@ -1,4 +1,6 @@
 import listeners from "./listeners";
+import { createProjectItem } from "./elements";
+
 
 const projectDom = ((form, _List, projectArray) =>{
 
@@ -8,36 +10,20 @@ const projectDom = ((form, _List, projectArray) =>{
     function show(){
 
         clearList(_List);
-
-
         addButton();
 
         if(projectArray.length > 0){
 
             projectArray.forEach((project) => {
-    
-                let pbox = document.createElement("div");
-                pbox.className = "pbox";
-        
-                let pName = document.createElement("h2");
-                pName.innerHTML = project.name;
-        
-                let pInfo = document.createElement("p");
-                pInfo.innerHTML = project.info;
-        
-                _List.appendChild(pbox);
-                pbox.appendChild(pName);
-                pbox.appendChild(pInfo);
-    
-                console.log(projectArray);   
+
+                createProjectItem(_List, project, projectArray, 'projectArray');
+
              });
         }
     }
 
     show();
     
-
-   
 
     function clearList (parent){
 
@@ -48,15 +34,6 @@ const projectDom = ((form, _List, projectArray) =>{
        }
 
     }
-
-
-    function deleteProject(){
-
-
-
-
-    }
-
 
     function addButton(){
 

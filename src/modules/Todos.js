@@ -1,5 +1,6 @@
 
 import listeners from "./listeners";
+import { createTodoItem } from "./elements";
 
 const todoDom = ((form, _List, todos) => {
 
@@ -12,22 +13,8 @@ const todoDom = ((form, _List, todos) => {
         addButton();
 
         todos.forEach((todo) => {
-
-            let tbox = document.createElement("div");
-            tbox.className = "pbox";
-    
-            let tName = document.createElement("h2");
-            tName.innerHTML = todo.name;
-    
-            let tInfo = document.createElement("p");
-            tInfo.innerHTML = todo.info;
-    
-            _List.appendChild(tbox);
-            tbox.appendChild(tName);
-            tbox.appendChild(tInfo);
-    
-    
-        })
+            createTodoItem(_List, todo, todos, 'todos');
+        });
 
     }
     show();
@@ -48,7 +35,6 @@ const todoDom = ((form, _List, todos) => {
         button.className = "nav-button"
         button.id = "add-todo";
         button.innerHTML = "Add Todo";
-
         _List.appendChild(button);
 
        listeners(button, form);

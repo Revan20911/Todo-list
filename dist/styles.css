@@ -61,6 +61,15 @@
     
   }
 
+  input[type="checkbox"]{
+
+    height: 25px;
+    width: 25px;
+
+    border-radius: 1.5em;
+
+  }
+
   .list-box{
 
     overflow: scroll;
@@ -190,7 +199,7 @@
     text-align: left;
     background-color: inherit;
     cursor: pointer;
-    background-color: var(--tertiary-dark);
+    background-color: var(--secondary-light);
 
     padding: 10px;
     margin-top: 20px;
@@ -226,6 +235,19 @@
     width: 50%;
     padding: 20px;
     --secondary-light: #ddd;
+
+  }
+
+  .bdiv{
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  #del{
+
+    width: fit-content;
+    height: fit-content;
 
   }
 
