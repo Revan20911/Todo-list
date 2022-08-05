@@ -1,0 +1,59 @@
+
+import listeners from "./listeners";
+
+const todoDom = ((form, _List, todos) => {
+
+    
+    form.setAttribute('data', 'todo');
+
+    function show(){
+
+        clearList(_List);
+        addButton();
+
+        todos.forEach((todo) => {
+
+            let tbox = document.createElement("div");
+            tbox.className = "pbox";
+    
+            let tName = document.createElement("h2");
+            tName.innerHTML = todo.name;
+    
+            let tInfo = document.createElement("p");
+            tInfo.innerHTML = todo.info;
+    
+            _List.appendChild(tbox);
+            tbox.appendChild(tName);
+            tbox.appendChild(tInfo);
+    
+    
+        })
+
+    }
+    show();
+    
+    function clearList (parent){
+
+        while(parent.firstChild){
+ 
+         parent.removeChild(parent.firstChild);
+ 
+        }
+ 
+     }
+
+     function addButton(){
+
+        let button = document.createElement("button");
+        button.className = "nav-button"
+        button.id = "add-todo";
+        button.innerHTML = "Add Todo";
+
+        _List.appendChild(button);
+
+       listeners(button, form);
+
+    }
+});
+
+export {todoDom};

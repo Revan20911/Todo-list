@@ -1,0 +1,22 @@
+class Todo{
+    constructor (id, name, description, complete) {
+
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.complete = complete;
+    }
+
+}
+
+class Project{
+    constructor (id, name, description) {
+
+        this.id = id;
+        this.name = name;
+        this.description = description;
+
+    } 
+}
+
+export {Project, Todo};

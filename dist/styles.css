@@ -46,7 +46,25 @@
     padding: 10px, 20px;
     font-size: 25px;
 
+    cursor: pointer;
+
     
+  }
+
+  input{
+    background-color:#eee;
+    margin-top: 10px;
+
+    width: 80%;
+
+    
+    
+  }
+
+  .list-box{
+
+    overflow: scroll;
+    overflow-wrap: normal;
   }
   
   button:hover{
@@ -78,19 +96,28 @@
   .modal{
 
     display: none;
-    width: 100%;
+    position: fixed;
     height: 100%;
+    width:100%;
+    z-index: 1;
+    
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
 
   }
 
   .modal-content{
 
-    display: flex;
+    display: block;
     background-color: var(--secondary-light);
     margin:auto;
 
-    height: fit-content;
+    height: 30%;
     width: fit-content;
+
+    border-radius: 5px;
+    text-align: center;
 
     
 
@@ -157,13 +184,17 @@
   .pbox{
 
 
-    display:flex;
+    display:block;
     align-items: center;
     border-radius: 5px;
     text-align: left;
     background-color: inherit;
     cursor: pointer;
-    background-color: black;
+    background-color: var(--tertiary-dark);
+
+    padding: 10px;
+    margin-top: 20px;
+
 
 
   }

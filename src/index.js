@@ -1,32 +1,16 @@
 
-import * as dom from './modules/domElements';
+import init from './modules/domElements';
 
+const render = (() => {
 
+    let form = document.querySelector('.modal');
 
+    const projectArray = JSON.parse(localStorage.getItem('projectArray')) || [];
+    const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+    let _List = document.querySelector('.list-box');
 
-
-const init = (() => {
-
-let p = document.querySelector('#project-tab');
-p.addEventListener('click', dom.projectDom);
-
-let t = document.querySelector('#todos');
-t.addEventListener('click', dom.todoDom);
-
-let form = document.querySelector(".modal");
-
-
-let c = document.querySelector('#cancel');
-c.addEventListener('click', cancel);
-
-function cancel (){
-
-    form.style.display = "none";
-}
-
-
-
+    init(form, _List, todos, projectArray);
 })();
 
 

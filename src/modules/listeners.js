@@ -9,15 +9,6 @@ const listeners  = ((button, form) =>{
         form.style.display = "flex";
     }
 
-    function del(){
-
-
-    }
-
-
-
-
-
 })
 
 export default listeners;
