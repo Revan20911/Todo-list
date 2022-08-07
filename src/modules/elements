@@ -1,8 +1,16 @@
 import listeners from "./listeners";
 
+
+//TODO: Refactor this and './Functions' into a single module to reduce clutter and make more portable.
+
+
 const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
+
+    //TODO: Have the project store local todo items in a data-structure and then store the items locally.
+    //TODO: Have the project call the locally stored todos and render them on the main page. 
+
     
-    const arr = JSON.parse(localStorage.getItem(toString(project))) || [];   
+    const arr = JSON.parse(localStorage.getItem(toString(project.id)));   
 
     let pbox = document.createElement("div");
     pbox.className = "pbox";
@@ -42,9 +50,16 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
     _side.appendChild(pbox).addEventListener('click', () => {
 
         _List.setAttribute('data', project.name);
-        project.tasks.forEach((task) => {
+        clearList(_List);
 
-            createProjectTodoItem(_List, project, task);
+        arr.forEach((task) => {
+
+                if(task.id === project.id){
+
+                    createProjectTodoItem(_List, project, task);
+                    console.log(project.id, task.id);
+                }
+                
         })
     });
     pbox.appendChild(pName);
@@ -75,6 +90,16 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
             }  
         })
     });
+
+    function clearList (parent){
+
+        while(parent.firstChild){
+    
+         parent.removeChild(parent.firstChild);
+    
+        }
+    
+     }
     
     return {
 

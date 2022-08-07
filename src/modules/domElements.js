@@ -4,6 +4,8 @@ import { todoDom } from "./Todos.js";
 
 
 const render = ((form, _List, _side, todos, projectArray) =>{
+        
+        // Constant DOM ID's
 
         let p = document.querySelector('#project-tab');
         p.addEventListener('click', renderProjects);
@@ -22,6 +24,9 @@ const render = ((form, _List, _side, todos, projectArray) =>{
         let s = document.querySelector('#submit');
         s.addEventListener('click', submit);
         
+
+        // This function determines what gets created when submit is clicked. 
+
         function submit(){
         
             if(form.getAttribute('data') == 'todo'){
@@ -40,25 +45,28 @@ const render = ((form, _List, _side, todos, projectArray) =>{
 
                 projectArray.forEach((project) => {
 
-                    
+                    //ISSUE: This is the root cause of the issue regarding the todos not attaching correctly to projects. 
 
-                    if(form.getAttribute('data') === project.name){
+                    let list = form.getAttribute('data')
+
+                    if(list === project.name){
 
                         addProjectTodo(_List, project);
-                        
-                        console.log('pushed');
-
-                        
+                        console.log('pushed');                
                     }
                 })
             }
         }
+
+        // Rendering Todos and Project pages
 
         function renderProjects (){
 
             projectDom(form, _List, _side, projectArray);
         
         }
+
+
         
         function renderTodos(){
         

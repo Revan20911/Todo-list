@@ -1,6 +1,9 @@
 import {Project, Todo} from './Classes';
 
 
+// These functions get called when hitting the submit button for their respective pages.
+
+
 function addProject (_List, _arr, _arrStr, form){
 
 
@@ -30,22 +33,18 @@ function addProject (_List, _arr, _arrStr, form){
     newTask.innerHTML = '<i class="fa-solid fa-plus"></i>';
     newTask.id = "add-task";
 
-    const id = getId(0 - 999);
+    const projectId = name;
 
     let pTasks = document.createElement("div");
     pTasks.className = "list-box";
-    pTasks.id = id;
+    pTasks.id = projectId;
 
-    
-
-    const newP = new Project(id, name, description);
+    const newP = new Project(projectId, name, description);
     _arr.push(newP);
     localStorage.setItem(_arrStr, JSON.stringify(_arr));
 
-    
-
     _List.appendChild(pbox);
-    
+
     pbox.appendChild(pTasks);
     pbox.appendChild(pName);
     pbox.appendChild(pInfo);
@@ -54,7 +53,7 @@ function addProject (_List, _arr, _arrStr, form){
     buttonDiv.appendChild(newTask);
     buttonDiv.appendChild(newTask).addEventListener('click', () => {
 
-        form.setAttribute('data', id);
+        form.setAttribute('data', projectId);
         form.style.display = 'flex';
 
     });
@@ -112,8 +111,6 @@ function addTodo (_List, _arr, _arrStr){
     _arr.push(newT);
     localStorage.setItem(_arrStr, JSON.stringify(_arr));
 
-   
-
     _List.appendChild(tbox);
     tbox.appendChild(tName);
     tbox.appendChild(tInfo);
@@ -134,9 +131,12 @@ function addTodo (_List, _arr, _arrStr){
   
 }
 
-function addProjectTodo (_List, project){
 
-   
+
+function addProjectTodo (_List, project,){
+
+    const p = JSON.parse(localStorage.getItem(toString(project.id)));
+
     let tbox = document.createElement("div");
     tbox.className = "pbox";
 
@@ -166,11 +166,11 @@ function addProjectTodo (_List, project){
     
     delButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
-    const newT = new Todo(project.id, name, description, null, priority);
-    project.tasks.push(newT);
-    localStorage.setItem(toString(project.id), JSON.stringify(project.tasks));
+    let taskId = project.id;
 
-   
+    const newT = new Todo(taskId, name, description, null, priority);
+    p.push(newT);
+    localStorage.setItem(toString(project.id), JSON.stringify(p));
 
     _List.appendChild(tbox);
     tbox.appendChild(tName);
@@ -182,8 +182,8 @@ function addProjectTodo (_List, project){
     buttonDiv.appendChild(delButton).addEventListener('click', () => {
 
         _List.removeChild(tbox);
-        project.tasks.splice(tbox, 1);
-        localStorage.setItem(toString(project.id), JSON.stringify(project.tasks));
+        p.splice(tbox, 1);
+        localStorage.setItem(toString(project.id), JSON.stringify(p));
     });
 
     
