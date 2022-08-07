@@ -1,14 +1,7 @@
 
-import listeners from "./listeners";
-import { createTodoItem } from "./elements";
+import { createTodoItem, clearList } from "./Elements.js";
 
 const todoDom = ((form, _List, todos) => {
-
-
-    
-
-    
-    form.setAttribute('data', 'todo');
 
     function show(){
 
@@ -21,26 +14,20 @@ const todoDom = ((form, _List, todos) => {
 
     }
     show();
-    
-    function clearList (parent){
-
-        while(parent.firstChild){
- 
-         parent.removeChild(parent.firstChild);
- 
-        }
- 
-     }
 
      function addButton(){
 
         let button = document.createElement("button");
         button.className = "nav-button"
         button.id = "add-todo";
-        button.innerHTML = "Add Todo";
-        _List.appendChild(button);
+        button.innerHTML = '<i class="fa-solid fa-plus"></i>Add Todo';
 
-       listeners(button, form);
+        button.addEventListener('click', () => {
+
+            form.setAttribute('data', 'todo');
+            form.style.display = "flex";
+        });
+        _List.appendChild(button);
 
     }
 });

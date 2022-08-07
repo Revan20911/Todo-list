@@ -7,11 +7,10 @@ const render = ((form, _List, _side, todos, projectArray) =>{
         
         // Constant DOM ID's
 
-        let p = document.querySelector('#project-tab');
-        p.addEventListener('click', renderProjects);
-        
+        renderProjects();
+
         let t = document.querySelector('#todos');
-        t.addEventListener('click', renderTodos )
+        t.addEventListener('click', renderTodos);
         
         let c = document.querySelector('#cancel');
         c.addEventListener('click', cancel);
@@ -38,21 +37,21 @@ const render = ((form, _List, _side, todos, projectArray) =>{
             
             else if(form.getAttribute('data') == "project"){
         
-                addProject(_side, projectArray, 'projectArray', form);
+                addProject(_side,_List,  projectArray, 'projectArray', form);
                 cancel();
             }
             else if(form.getAttribute('data') != "project" && form.getAttribute('data')!= "todo"){
 
-                projectArray.forEach((project) => {
-
-                    //ISSUE: This is the root cause of the issue regarding the todos not attaching correctly to projects. 
+                projectArray.forEach((project) => { 
 
                     let list = form.getAttribute('data')
 
                     if(list === project.name){
 
                         addProjectTodo(_List, project);
-                        console.log('pushed');                
+                        renderProjects();
+                        console.log('pushed');
+                        cancel();                
                     }
                 })
             }
@@ -67,7 +66,7 @@ const render = ((form, _List, _side, todos, projectArray) =>{
         }
 
 
-        
+    
         function renderTodos(){
         
             todoDom(form, _List, todos);

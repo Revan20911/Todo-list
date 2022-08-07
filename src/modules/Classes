@@ -1,23 +1,24 @@
 class Todo{
-    constructor (id, name, description, complete, priority) {
+    constructor (id, name, description, complete, priority, date) {
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.complete = complete;
         this.priority = priority;
-        // this.date = date;
+        this.date = date;
     }
 
 }
 
 class Project{
-    constructor (id, name, description, tasks=[]) {
+    constructor (id, name, description, tasks=[], date) {
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.tasks = tasks;
+        this.date = date;
 
     } 
 

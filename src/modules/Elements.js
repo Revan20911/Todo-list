@@ -1,4 +1,4 @@
-import listeners from "./listeners";
+
 
 
 //TODO: Refactor this and './Functions' into a single module to reduce clutter and make more portable.
@@ -8,13 +8,12 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
 
     //TODO: Have the project store local todo items in a data-structure and then store the items locally.
     //TODO: Have the project call the locally stored todos and render them on the main page. 
-
-    
     const arr = JSON.parse(localStorage.getItem(toString(project.id)));   
 
     let pbox = document.createElement("div");
     pbox.className = "pbox";
     pbox.id = project.id;
+    pbox.setAttribute('tabindex', '1');
 
     if(project.id == null || project.id == ""){
 
@@ -66,6 +65,19 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
     pbox.appendChild(pInfo);
     pbox.appendChild(buttonDiv);
     buttonDiv.appendChild(pCompleted);
+    buttonDiv.appendChild(pCompleted).addEventListener('checked', () => {
+
+        project.complete = true;
+
+    });
+
+    buttonDiv.appendChild(pCompleted).addEventListener('unchecked', () => {
+
+        project.complete = false;
+
+    });
+
+
     buttonDiv.appendChild(newTask);
     buttonDiv.appendChild(newTask).addEventListener('click', () => {
 
@@ -77,6 +89,11 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
     buttonDiv.appendChild(delButton).addEventListener('click', () => {
 
         _side.removeChild(pbox);
+
+        while(_List.firstChild){
+
+            _List.removeChild(_List.firstChild);
+        }
         _arr.splice(pbox, 1);
         localStorage.setItem(_arrStr, JSON.stringify(_arr));
     });
@@ -89,30 +106,19 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
                 createProjectTodoItem(pTasks, project, task);
             }  
         })
-    });
-
-    function clearList (parent){
-
-        while(parent.firstChild){
-    
-         parent.removeChild(parent.firstChild);
-    
-        }
-    
-     }
-    
-    return {
-
-
-        _side,
-        pbox,
-        buttonDiv,
-        delButton,
-    
-
-    };
-    
+    });    
 });
+
+function clearList (parent){
+
+    while(parent.firstChild){
+
+     parent.removeChild(parent.firstChild);
+
+    }
+
+ }
+
 
 function createTodoItem(_List, todo, _arr, _arrStr){
 
@@ -133,12 +139,6 @@ function createTodoItem(_List, todo, _arr, _arrStr){
     
     let pCompleted = document.createElement('input');
     pCompleted.type = "checkbox";
-
-    if(todo.complete == true){
-
-        pCompleted.value == true;
-
-    }
 
     let delButton = document.createElement("button");
     
@@ -162,6 +162,8 @@ function createTodoItem(_List, todo, _arr, _arrStr){
         localStorage.setItem(_arrStr, JSON.stringify(_arr));
     });
 
+    buttonDiv.appendChild(todoDate);
+
 }
 
 function createProjectTodoItem(_List, project, todo){
@@ -184,12 +186,6 @@ function createProjectTodoItem(_List, project, todo){
     let pCompleted = document.createElement('input');
     pCompleted.type = "checkbox";
 
-    if(todo.complete == true){
-
-        pCompleted.value == true;
-
-    }
-
     let delButton = document.createElement("button");
     
     delButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
@@ -211,11 +207,9 @@ function createProjectTodoItem(_List, project, todo){
         project.tasks.splice(tbox, 1);
         localStorage.setItem(toString(project.id), JSON.stringify(project.tasks));
     });
+    buttonDiv.appendChild(todoDate);
 
 }
 
 
-
-
-
-export {createProjectItem, createTodoItem};
+export {createProjectItem, createTodoItem, clearList};

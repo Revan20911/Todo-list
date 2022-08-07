@@ -4,7 +4,7 @@ import {Project, Todo} from './Classes';
 // These functions get called when hitting the submit button for their respective pages.
 
 
-function addProject (_List, _arr, _arrStr, form){
+function addProject (_side, _List, _arr, _arrStr, form){
 
 
     const name = document.querySelector('#name').value;
@@ -17,6 +17,12 @@ function addProject (_List, _arr, _arrStr, form){
 
     let pbox = document.createElement("div");
     pbox.className = "pbox";
+    pbox.setAttribute('tabindex', '1');
+
+    const date = document.querySelector("#dueDate").value;
+
+    let dDate = document.createElement("label");
+    dDate.innerHTML = date;
     
     let buttonDiv = document.createElement('div');
     buttonDiv.className = "bdiv";
@@ -43,13 +49,14 @@ function addProject (_List, _arr, _arrStr, form){
     _arr.push(newP);
     localStorage.setItem(_arrStr, JSON.stringify(_arr));
 
-    _List.appendChild(pbox);
+    _side.appendChild(pbox);
 
     pbox.appendChild(pTasks);
     pbox.appendChild(pName);
     pbox.appendChild(pInfo);
     pbox.appendChild(buttonDiv);
     buttonDiv.appendChild(pCompleted);
+    
     buttonDiv.appendChild(newTask);
     buttonDiv.appendChild(newTask).addEventListener('click', () => {
 
@@ -60,10 +67,18 @@ function addProject (_List, _arr, _arrStr, form){
     buttonDiv.appendChild(delButton);
     buttonDiv.appendChild(delButton).addEventListener('click', () => {
 
-        _List.removeChild(pbox);
+        _side.removeChild(pbox);
+
+        while(_List.firstChild){
+
+            _List.removeChild(_List.firstChild);
+        }
+
         _arr.splice(pbox, 1);
         localStorage.setItem(_arrStr, JSON.stringify(_arr));
     });
+
+    buttonDiv.appendChild(dDate);
 
     console.log('Project Added Successfully');
   
@@ -104,10 +119,14 @@ function addTodo (_List, _arr, _arrStr){
 
     let delButton = document.createElement("button");
     delButton.id = "del";
+
+    const date = document.querySelector("#dueDate").value;
+    let dDate = document.createElement("label");
+    dDate.innerHTML = date;
     
     delButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
-    const newT = new Todo(null, name, description, null, priority);
+    const newT = new Todo(null, name, description, null, priority, date);
     _arr.push(newT);
     localStorage.setItem(_arrStr, JSON.stringify(_arr));
 
@@ -124,6 +143,8 @@ function addTodo (_List, _arr, _arrStr){
         _arr.splice(tbox, 1);
         localStorage.setItem(_arrStr, JSON.stringify(_arr));
     });
+
+    buttonDiv.appendChild(dDate);
 
     
 
@@ -144,8 +165,6 @@ function addProjectTodo (_List, project,){
     let tName = document.createElement("h2");
     tName.innerHTML = name;
     
-    const id = document.querySelector('#itemId');
-    
     const description = document.querySelector("#description").value;
     let tInfo = document.createElement("p");
     tInfo.innerHTML = description;
@@ -156,6 +175,10 @@ function addProjectTodo (_List, project,){
 
     let buttonDiv = document.createElement('div');
     buttonDiv.className = "bdiv";
+
+    const date = document.querySelector("#dueDate").value;
+    let dDate = document.createElement("label");
+    dDate.innerHTML = date;
 
     // const completed = document.querySelector('#completed').value;
     let pCompleted = document.createElement('input');
@@ -168,7 +191,7 @@ function addProjectTodo (_List, project,){
 
     let taskId = project.id;
 
-    const newT = new Todo(taskId, name, description, null, priority);
+    const newT = new Todo(taskId, name, description, null, priority, date);
     p.push(newT);
     localStorage.setItem(toString(project.id), JSON.stringify(p));
 
@@ -185,6 +208,8 @@ function addProjectTodo (_List, project,){
         p.splice(tbox, 1);
         localStorage.setItem(toString(project.id), JSON.stringify(p));
     });
+
+    buttonDiv.appendChild(dDate);
 
     
 
