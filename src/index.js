@@ -8,9 +8,11 @@ const init = (() => {
     const projectArray = JSON.parse(localStorage.getItem('projectArray')) || [];
     const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    let _List = document.querySelector('.list-box');
+    let _List = document.querySelector('.todo-content');
 
-    render(form, _List, todos, projectArray);
+    let _side = document.querySelector('#my-projects');
+
+    render(form, _List, _side, todos, projectArray);
 
 })();
 

@@ -1,25 +1,32 @@
 import listeners from "./listeners";
-import { createProjectItem } from "./elements";
+import { createProjectItem , createTodoItem} from "./elements";
 
 
-const projectDom = ((form, _List, projectArray) =>{
+const projectDom = ((form, _List, _side, projectArray) =>{
 
-   
     form.setAttribute('data', 'project');
 
     function show(){
 
-        clearList(_List);
+        clearList(_side);
         addButton();
 
         if(projectArray.length > 0){
 
             projectArray.forEach((project) => {
 
-                createProjectItem(_List, project, projectArray, 'projectArray');
+                createProjectItem(_side, _List, project, projectArray, 'projectArray', form);
+             
 
              });
         }
+
+        Array.from(_side).forEach((todo) => {
+
+
+
+
+        })
     }
 
     show();
@@ -42,7 +49,7 @@ const projectDom = ((form, _List, projectArray) =>{
         button.id = "add-project";
         button.innerHTML = "Add Project";
 
-        _List.appendChild(button);
+        _side.appendChild(button);
         listeners(button, form);
     }
 

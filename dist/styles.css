@@ -61,16 +61,26 @@
     
   }
 
+  select, label{
+
+    margin-left: 10px;
+    font-size: 25px;
+
+  }
+
   input[type="checkbox"]{
 
     height: 25px;
     width: 25px;
 
     border-radius: 1.5em;
+    margin: 10px;
 
   }
 
   .list-box{
+
+    display: block;
 
     overflow: scroll;
     overflow-wrap: normal;
@@ -201,12 +211,24 @@
     cursor: pointer;
     background-color: var(--secondary-light);
 
-    padding: 10px;
+    
     margin-top: 20px;
 
 
 
   }
+
+  .pbox:focus{
+
+    background-color:#ccc;
+  }
+
+  .pbox:hover{
+
+    background-color:#ccc;
+  }
+
+  
 
   .nav-button{
 
@@ -220,6 +242,20 @@
   }
 
   /* main content */
+
+  .modal-header{
+
+    display: flex;
+
+    background-color: #333;
+    color:#eee;
+    text-align: left;
+    height: 50px;
+    width:100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+  }
 
   .todo-content{
     display: block;
@@ -238,9 +274,27 @@
 
   }
 
+  p{
+
+    margin: 10px;
+
+  }
+
+  h2{
+    display: flex;
+    background-color: #333;
+    color:#eee;
+    width: 100%;
+    justify-content: center ;
+    align-items: center;
+
+  }
+  
+
   .bdiv{
     display: flex;
     justify-content: space-between;
+    
   }
 
 

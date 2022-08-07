@@ -20,10 +20,23 @@
         <main class="main">
             <div class="modal">
                 <div class="modal-content">
+                    <h1 class="modal-header">Create New Item</h1>
                     <input placeholder="Name" id="name">
                     <input placeholder="Description" id="description">
                     <button id="submit">Submit</button>
                     <button id="cancel">Cancel</button>
+                    <div class="bdiv">
+                        <div><label for="Priority">Priority</label>
+                            <select name="Priority" id="priority">
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="nav">
@@ -36,17 +49,10 @@
                         <i class="fa-regular fa-pen-to-square"></i>
                         Projects
                     </button>
-                    <button class="nav-button">
-                        <i class="fa-solid fa-vault"></i>
-                        Archived Todos
-                    </button>
                 </div>
-                <h1>My Todos</h1>
-                <div class="nav-box">
-                    <button class="nav-button">
-                        <i class="fa-solid fa-vault"></i>
-                        Today
-                    </button>
+                <h1>My Projects</h1>
+                <div class="nav-box" id="my-projects">
+                    
                 </div>
             </div>
             <div class="todo-content">
