@@ -154,7 +154,7 @@ function addTodo (_List, _arr, _arrStr){
 
 
 
-function addProjectTodo (_List, project,){
+function addProjectTodo (_List, project){
 
     const p = JSON.parse(localStorage.getItem(toString(project.id)));
 
