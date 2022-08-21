@@ -51,7 +51,7 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
         _List.setAttribute('data', project.name);
         clearList(_List);
 
-        arr.forEach((task) => {
+        _arr.forEach((task) => {
 
                 if(task.id === project.id){
 
@@ -99,7 +99,7 @@ const createProjectItem = ((_side, _List, project, _arr, _arrStr,form) => {
     });
     pbox.appendChild(pTasks).addEventListener('load', ()=> {
 
-        arr.forEach((task) => {
+        _arr.forEach((task) => {
 
             if(task.id === project.id){
     
