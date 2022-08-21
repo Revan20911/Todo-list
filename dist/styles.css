@@ -248,14 +248,11 @@
 
     display:block;
     align-items: center;
-    
     text-align: left;
     background-color: inherit;
     cursor: pointer;
     background-color: var(--secondary-light);
     margin-top: 20px;
-
-    
 
   }
 
