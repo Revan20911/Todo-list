@@ -1,5 +1,7 @@
 # Todo List
 
+Live Preview: https://revan20911.github.io/Todo-list/
+
 ## This is a Todo List web application built using Vanilla JavaScript, HTML, and CSS.
 
 
